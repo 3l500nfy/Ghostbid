@@ -34,7 +34,6 @@ export const initZamaClient = async () => {
           acl: cfg.acl,
           inputVerifier: cfg.inputVerifier,
           kms: cfg.kms,
-          relayerUrl: cfg.relayerUrl,
           gatewayChainId: cfg.gatewayChainId,
           chainId: cfg.chainId
         });
