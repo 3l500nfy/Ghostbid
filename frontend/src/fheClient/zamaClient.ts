@@ -47,7 +47,8 @@ export const initZamaClient = async () => {
           verifyingContractAddressDecryption: cfg.decryption,
           gatewayChainId: cfg.gatewayChainId,
           chainId: cfg.chainId,
-          relayerUrl: cfg.relayerUrl
+          relayerUrl: cfg.relayerUrl,
+          network: (window as any).ethereum
         });
 
         console.log('✅ Zama FHE instance created successfully!');
