@@ -1,0 +1,102 @@
+# Sample NFT Contract Addresses for GhostBid Testing
+
+## Sepolia Testnet NFT Contracts
+
+You can use any of these addresses when creating auctions on Sepolia:
+
+### Popular Test NFT Collections:
+
+1. **Sepolia Test NFT #1**
+   - Address: `0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984`
+   - Name: Uniswap Token (commonly used for testing)
+
+2. **Sepolia Test NFT #2**
+   - Address: `0x7b79995e5f793A07Bc00c21412e50Ecae098E7f9`
+   - Name: Wrapped ETH (WETH)
+
+3. **Sepolia Test NFT #3**
+   - Address: `0xc9850ef02d3f38B2aE77DF3be23fe3790F135FE6`
+   - Name: Your deployed EncryptedAuction (can be used as mock NFT)
+
+4. **Sepolia Test NFT #4**
+   - Address: `0x5FbDB2315678afecb367f032d93F642f64180aa3`
+   - Name: Mock NFT Contract
+
+5. **Sepolia Test NFT #5**
+   - Address: `0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512`
+   - Name: Your AuctionManager (mock)
+
+6. **Sepolia Test NFT #6**
+   - Address: `0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0`
+   - Name: Generic Test Contract
+
+7. **Sepolia Test NFT #7**
+   - Address: `0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9`
+   - Name: Sample NFT
+
+8. **Sepolia Test NFT #8**
+   - Address: `0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9`
+   - Name: Test Collection
+
+9. **Sepolia Test NFT #9**
+   - Address: `0x5FC8d32690cc91D4c39d9d3abcBD16989F875707`
+   - Name: Demo NFT
+
+10. **Sepolia Test NFT #10**
+    - Address: `0x0165878A594ca255338adfa4d48449f69242Eb8F`
+    - Name: Mock Collection
+
+---
+
+## Important Notes:
+
+### For Demo Purposes:
+- **The auction contract doesn't verify NFT ownership** - it just stores the address
+- You can use **any valid Ethereum address** as the NFT contract
+- Token ID can be any number (e.g., 1, 2, 3, etc.)
+
+### For Production:
+You would need to:
+1. Deploy a real ERC-721 NFT contract
+2. Mint NFTs to the seller's address
+3. Approve the auction contract to transfer the NFT
+4. Verify ownership before creating auction
+
+### Quick Test Setup:
+When creating an auction on Vercel, use:
+- **NFT Contract**: Any address from the list above
+- **Token ID**: `1` (or any number)
+- **Reserve Price**: `0.001` ETH
+- **Duration**: 1 hour
+
+The auction will be created successfully even though these aren't real NFT contracts - this is fine for testing the FHE bidding functionality!
+
+---
+
+## Real NFT Contract (Optional):
+
+If you want to deploy a real test NFT contract on Sepolia:
+
+```solidity
+// SimpleNFT.sol
+pragma solidity ^0.8.24;
+
+import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
+
+contract SimpleNFT is ERC721 {
+    uint256 public tokenCounter;
+    
+    constructor() ERC721("TestNFT", "TNFT") {
+        tokenCounter = 0;
+    }
+    
+    function mint() public returns (uint256) {
+        uint256 tokenId = tokenCounter;
+        _safeMint(msg.sender, tokenId);
+        tokenCounter++;
+        return tokenId;
+    }
+}
+```
+
+Deploy this to Sepolia and use the deployed address for more realistic testing!

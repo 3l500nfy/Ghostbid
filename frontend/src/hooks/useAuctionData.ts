@@ -55,12 +55,12 @@ export const useAuctionData = (auctionId: string | undefined) => {
                 const auctionContract = new ethers.Contract(getAuctionAddress(), auctionAbi.abi, provider);
 
                 // Query BidSubmitted events for this auction
-                const filter = auctionContract.filters.BidSubmitted(BigInt(auctionId));
+                const filter = auctionContract.filters.EncryptedBidSubmitted(BigInt(auctionId));
                 const events = await auctionContract.queryFilter(filter);
 
                 const fetchedBids: Bid[] = events.map((event: any) => ({
                     bidder: event.args.bidder,
-                    ciphertext: event.args.encryptedBid,
+                    ciphertext: event.args.encryptedBid, // Note: ABI uses 'encryptedBid' but struct uses 'ciphertext', check mapping
                     commitment: event.args.commitment
                 }));
 
@@ -82,9 +82,9 @@ export const useAuctionData = (auctionId: string | undefined) => {
                 const provider = new ethers.JsonRpcProvider(contractConfig.rpcUrl || 'http://localhost:8545');
                 const auctionContract = new ethers.Contract(getAuctionAddress(), auctionAbi.abi, provider);
 
-                const filter = auctionContract.filters.BidSubmitted(BigInt(auctionId));
+                const filter = auctionContract.filters.EncryptedBidSubmitted(BigInt(auctionId));
 
-                auctionContract.on(filter, (auctionIdEvent, bidder, encryptedBid, commitment) => {
+                auctionContract.on(filter, (auctionIdEvent, bidIndex, bidder, encryptedBid, commitment) => {
                     setBids((prevBids) => [
                         ...prevBids,
                         {

@@ -11,6 +11,12 @@ export const useZama = () => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    if (!(window as any).ethereum) {
+      console.error('MetaMask not detected');
+      setError('MetaMask not detected');
+      return;
+    }
+
     console.log('🔐 Initializing Zama FHE SDK...');
     initZamaClient()
       .then(() => {
