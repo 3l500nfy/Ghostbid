@@ -8,7 +8,6 @@ export interface FheConfig {
   inputVerifier: string;
   kms: string;
   decryption: string;
-  relayerUrl: string;
   gatewayChainId: number;
   chainId: number;
   rpcUrl: string;
@@ -29,7 +28,6 @@ export const getFheConfig = (): FheConfig => {
       (import.meta.env.VITE_FHE_DECRYPTION_VERIFIER as string | undefined) ??
       (import.meta.env.VITE_FHE_INPUT_VERIFIER as string | undefined) ??
       LOCAL_INPUT_VERIFIER,
-    relayerUrl: (import.meta.env.VITE_FHE_RELAYER_URL as string | undefined) ?? LOCAL_RELAYER,
     gatewayChainId: parseNumber(import.meta.env.VITE_FHE_GATEWAY_CHAIN_ID as string | undefined, 31337),
     chainId: parseNumber(import.meta.env.VITE_FHE_CHAIN_ID as string | undefined, 31337),
     rpcUrl: (import.meta.env.VITE_RPC_URL as string | undefined) ?? 'http://localhost:8545'

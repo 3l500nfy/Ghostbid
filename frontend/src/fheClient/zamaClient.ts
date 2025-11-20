@@ -47,7 +47,6 @@ export const initZamaClient = async () => {
           verifyingContractAddressDecryption: cfg.decryption,
           gatewayChainId: cfg.gatewayChainId,
           chainId: cfg.chainId,
-          relayerUrl: cfg.relayerUrl,
           network: (window as any).ethereum
         });
 

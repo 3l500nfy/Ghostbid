@@ -315,7 +315,7 @@
       "artifacts": []
     },
     "/Users/id31500/Development/CryptoProjects/GhostBidFHE/ghostbid/fhevmTemp/@fhevm/solidity/config/ZamaConfig.sol": {
-      "lastModificationDate": 1763662278724,
+      "lastModificationDate": 1763681753464,
       "contentHash": "c85e28972111397253ff2be2b8b9287e",
       "sourceName": "@fhevm/solidity/config/ZamaConfig.sol",
       "solcConfig": {
