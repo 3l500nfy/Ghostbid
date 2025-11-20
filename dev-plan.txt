@@ -1,0 +1,43 @@
+GhostBid Development Phases
+===========================
+
+Phase 0 — Foundations
+- Align requirements from projectGuid and UI sample.
+- Create repo structure (/frontend, /contracts, /fhe, /scripts, /tests).
+
+Phase 1 — Frontend Scaffold
+- Bootstrap Vite React + Tailwind.
+- Implement routing for Home, CreateAuction, ViewAuction, Finalize.
+- Create base components (AuctionCard, BidModal, EncryptedBidViewer, CountdownTimer, WinnerSection, FinalizePanel).
+
+Phase 2 — FHE Client Integration
+- Stub Zama client with init + encrypt flows.
+- Provide hooks (`useZama`) for UI to consume encryption.
+- Validate ciphertext formatting utilities.
+
+Phase 3 — Smart Contracts
+- Implement `EncryptedAuction` multi-auction storage with IFHE adapter hooks.
+- Implement `AuctionManager` registry referencing `EncryptedAuction`.
+- Document comparator strategy in `fhe/comparator.fhe`.
+
+Phase 4 — Hooks & Utils
+- Build ethers integration hook (`useAuctionContract`) for submitting bids + finalizing.
+- Add helpers for encoding auction params, timers, and ciphertext validation.
+
+Phase 5 — Tooling & Scripts
+- Author TypeScript scripts: deploy.ts, simulate_auction.ts, finalize.ts.
+- Provide mock FHE helpers for CLI + tests.
+
+Phase 6 — Testing & Verification
+- Add Node tests for encryption helper correctness and auction-flow logic (placeholder until Hardhat tests are wired).
+- Configure npm scripts for linting + node:test.
+
+Phase 7 — Documentation & Demo Prep
+- Write README (overview, architecture, FHE explanation, runbook, roadmap, credits).
+- Outline next steps for replacing mocks with real fhEVM artifacts and adding demo video.
+
+Phase 8 — Full FHE Integration (Future Work)
+- Swap mocks with actual Zama SDK.
+- Implement fhEVM comparator deployment + relayer.
+- Expand Jest/Hardhat coverage and e2e flows.
+

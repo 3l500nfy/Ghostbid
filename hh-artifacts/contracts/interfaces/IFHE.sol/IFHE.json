@@ -1,0 +1,30 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "IFHE",
+  "sourceName": "contracts/interfaces/IFHE.sol",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32[]",
+          "name": "ciphertextHandles",
+          "type": "bytes32[]"
+        }
+      ],
+      "name": "fhe_max",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "winnerHandle",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}

@@ -1,0 +1,23 @@
+// GhostBid comparator pseudo-code
+// Inputs: ciphertext array C[0..N-1], each encoding an unsigned 48-bit integer bid
+// Output: ciphertext encoding {winningIndex, winningValue}
+
+// Round 1: pairwise compare using subtract + sign
+// function compare(a, b):
+//   diff = a.value - b.value
+//   gt = msb(diff) == 0 ? 1 : 0          // sign extraction circuit
+//   maxValue = gt * a.value + (1 - gt) * b.value
+//   maxIndex = gt * a.index + (1 - gt) * b.index
+//   return {index: maxIndex, value: maxValue}
+
+// Tournament tree:
+//   level1[i] = compare(C[2*i], C[2*i+1])
+//   level2[i] = compare(level1[2*i], level1[2*i+1])
+//   ...
+//   winner = levelK[0]
+
+// Optional: compute second highest by tracking loser per round.
+
+// This file will be replaced by an actual Zama fhEVM circuit description
+// once the SDK is wired into this repo.
+
