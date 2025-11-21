@@ -38,30 +38,10 @@ export const initZamaClient = async () => {
           chainId: cfg.chainId
         });
 
-        // Fetch public key from KMS (required for v0.9)
-        console.log('🔑 Fetching KMS public key...');
-        const publicKeyResponse = await fetch(
-          `https://gateway.zama.ai/v1/publickey/${cfg.gatewayChainId}/${cfg.kms}`
-        );
-
-        if (!publicKeyResponse.ok) {
-          throw new Error(`Failed to fetch public key: ${publicKeyResponse.statusText}`);
-        }
-
-        const publicKeyData = await publicKeyResponse.json();
-        console.log('✅ Public key fetched:', publicKeyData);
-
         const instance = await createInstance({
-          aclContractAddress: cfg.acl,
-          inputVerifierContractAddress: cfg.inputVerifier,
-          verifyingContractAddressInputVerification: cfg.inputVerifier,
-          kmsContractAddress: cfg.kms,
-          verifyingContractAddressDecryption: cfg.decryption,
-          gatewayChainId: cfg.gatewayChainId,
           chainId: cfg.chainId,
           network: (window as any).ethereum,
-          publicKey: publicKeyData.publicKey,
-          publicKeyId: publicKeyData.publicKeyId
+          gatewayUrl: 'https://gateway.zama.ai'
         });
 
         console.log('✅ Zama FHE instance created successfully!');
