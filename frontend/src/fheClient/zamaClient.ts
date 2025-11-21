@@ -41,7 +41,12 @@ export const initZamaClient = async () => {
         const instance = await createInstance({
           chainId: cfg.chainId,
           network: (window as any).ethereum,
-          gatewayUrl: 'https://gateway.zama.ai'
+          aclContractAddress: cfg.acl,
+          inputVerifierContractAddress: cfg.inputVerifier,
+          verifyingContractAddressInputVerification: cfg.inputVerifier,
+          kmsContractAddress: cfg.kms,
+          verifyingContractAddressDecryption: cfg.decryption,
+          gatewayChainId: cfg.gatewayChainId
         });
 
         console.log('✅ Zama FHE instance created successfully!');
