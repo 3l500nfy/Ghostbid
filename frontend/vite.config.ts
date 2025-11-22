@@ -6,7 +6,6 @@ export default defineConfig({
   plugins: [
     react(),
     nodePolyfills({
-      include: ['buffer', 'process', 'util', 'stream', 'events'],
       globals: {
         Buffer: true,
         global: true,
@@ -14,13 +13,11 @@ export default defineConfig({
       },
     }),
   ],
-  server: {
-    port: 5173,
-    host: true
+  optimizeDeps: {
+    exclude: ['@zama-fhe/relayer-sdk'],
   },
   build: {
     outDir: 'dist',
     sourcemap: true
   }
 });
-
