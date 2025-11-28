@@ -23,7 +23,7 @@ const func: DeployFunction = async (hre: HardhatRuntimeEnvironment) => {
   const auctionContract = await ethers.getContractAt('EncryptedAuction', encryptedAuction.address);
   const managerDeployment = await deployments.get('AuctionManager');
   const managerContract = await ethers.getContractAt('AuctionManager', managerDeployment.address);
-  const tx = await auctionContract.setManager(managerContract.getAddress());
+  const tx = await auctionContract.setManager(await managerContract.getAddress());
   await tx.wait();
 };
 

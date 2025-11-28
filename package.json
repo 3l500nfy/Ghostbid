@@ -16,12 +16,12 @@
   },
   "dependencies": {
     "@fhevm/solidity": "^0.9.1",
+    "@openzeppelin/contracts": "^5.4.0",
     "dotenv": "^16.4.7",
     "encrypted-types": "^0.0.4",
     "ethers": "^6.15.0"
   },
   "devDependencies": {
-    "@zama-fhe/relayer-sdk": "^0.3.0-5",
     "@fhevm/hardhat-plugin": "^0.3.0-1",
     "@nomicfoundation/hardhat-chai-matchers": "^2.1.0",
     "@nomicfoundation/hardhat-ethers": "^3.1.0",
@@ -34,6 +34,7 @@
     "@types/node": "^20.17.6",
     "@typescript-eslint/eslint-plugin": "^8.13.0",
     "@typescript-eslint/parser": "^8.13.0",
+    "@zama-fhe/relayer-sdk": "^0.3.0-5",
     "chai": "^4.5.0",
     "chai-as-promised": "^8.0.1",
     "cross-env": "^7.0.3",
@@ -51,4 +52,3 @@
     "typescript": "^5.6.3"
   }
 }
-

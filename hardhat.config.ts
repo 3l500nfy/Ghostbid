@@ -59,9 +59,7 @@ const config: HardhatUserConfig = {
     cache: 'hh-cache',
     artifacts: 'hh-artifacts'
   },
-  fhevm: {
-    network: 'sepolia'
-  },
+
   typechain: {
     outDir: 'types',
     target: 'ethers-v6'

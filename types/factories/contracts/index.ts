@@ -3,5 +3,6 @@
 /* eslint-disable */
 export * as adapters from "./adapters";
 export * as interfaces from "./interfaces";
+export * as mocks from "./mocks";
 export { AuctionManager__factory } from "./AuctionManager__factory";
 export { EncryptedAuction__factory } from "./EncryptedAuction__factory";

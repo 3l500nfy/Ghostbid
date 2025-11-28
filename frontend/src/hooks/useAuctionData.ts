@@ -63,10 +63,14 @@ export const useAuctionData = (auctionId: string | undefined) => {
                 const fromBlock = Math.max(0, currentBlock - 5);
                 const events = await auctionContract.queryFilter(filter, fromBlock, 'latest');
 
-                const fetchedBids: Bid[] = events.map((event: any) => ({
-                    bidder: event.args.bidder,
-                    ciphertext: event.args.encryptedBid, // Note: ABI uses 'encryptedBid' but struct uses 'ciphertext', check mapping
-                    commitment: event.args.commitment
+                const fetchedBids: Bid[] = await Promise.all(events.map(async (event: any) => {
+                    const bidIndex = event.args.bidIndex;
+                    const bidData = await auctionContract.auctionBids(auctionId, bidIndex);
+                    return {
+                        bidder: bidData.bidder,
+                        ciphertext: bidData.ciphertext,
+                        commitment: bidData.commitment
+                    };
                 }));
 
                 setBids(fetchedBids);
@@ -89,15 +93,29 @@ export const useAuctionData = (auctionId: string | undefined) => {
 
                 const filter = auctionContract.filters.EncryptedBidSubmitted(BigInt(auctionId));
 
-                auctionContract.on(filter, (auctionIdEvent, bidIndex, bidder, encryptedBid, commitment) => {
-                    setBids((prevBids) => [
-                        ...prevBids,
-                        {
-                            bidder,
-                            ciphertext: encryptedBid,
-                            commitment
-                        }
-                    ]);
+                auctionContract.on(filter, async (...args) => {
+                    try {
+                        const event = args[args.length - 1];
+                        console.log('🔔 New bid event received:', event);
+
+                        // EncryptedBidSubmitted(uint256 indexed auctionId, uint256 indexed bidIndex, address indexed bidder)
+                        // args are in event.args
+                        const bidIndex = event.args[1];
+
+                        const bidData = await auctionContract.auctionBids(BigInt(auctionId), BigInt(bidIndex));
+                        console.log('📦 Fetched bid data:', bidData);
+
+                        setBids((prevBids) => [
+                            ...prevBids,
+                            {
+                                bidder: bidData.bidder,
+                                ciphertext: bidData.ciphertext,
+                                commitment: bidData.commitment
+                            }
+                        ]);
+                    } catch (error) {
+                        console.error('Error fetching new bid details:', error);
+                    }
                 });
 
                 return () => {

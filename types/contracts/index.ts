@@ -5,5 +5,7 @@ import type * as adapters from "./adapters";
 export type { adapters };
 import type * as interfaces from "./interfaces";
 export type { interfaces };
+import type * as mocks from "./mocks";
+export type { mocks };
 export type { AuctionManager } from "./AuctionManager";
 export type { EncryptedAuction } from "./EncryptedAuction";
