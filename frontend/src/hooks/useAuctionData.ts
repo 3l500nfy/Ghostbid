@@ -57,10 +57,10 @@ export const useAuctionData = (auctionId: string | undefined) => {
                 // Query BidSubmitted events for this auction
                 const filter = auctionContract.filters.EncryptedBidSubmitted(BigInt(auctionId));
 
-                // Get current block to limit range if needed, or just query recent history
-                // Alchemy free tier has strict range limits (max 10 blocks). We'll use 5 to be safe.
+                // Get current block and query from a reasonable range to capture all auction bids
+                // Using 100k blocks (~2 weeks on Sepolia) to ensure we get all bids
                 const currentBlock = await provider.getBlockNumber();
-                const fromBlock = Math.max(0, currentBlock - 5);
+                const fromBlock = Math.max(0, currentBlock - 100000);
                 const events = await auctionContract.queryFilter(filter, fromBlock, 'latest');
 
                 const fetchedBids: Bid[] = await Promise.all(events.map(async (event: any) => {
