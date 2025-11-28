@@ -21,6 +21,15 @@ const CreateAuction = () => {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
+      // Validate times
+      const startDate = new Date(form.startTime);
+      const endDate = new Date(form.endTime);
+
+      if (startDate >= endDate) {
+        setStatus('Error: End time must be after start time');
+        return;
+      }
+
       setStatus('Submitting transaction...');
       setAuctionId(null);
       const params = encodeAuctionParams(form);
