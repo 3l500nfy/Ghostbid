@@ -56,7 +56,7 @@ const WinnerSection = ({ auctionId, auctionData, winnerCiphertext }: WinnerSecti
       {!auctionData?.finalized && (
         <p className="mt-4 text-sm text-emerald-100">
           {canFinalize
-            ? 'Auction has ended. Click below to compute the encrypted winner using FHE.'
+            ? 'Auction has ended. Initiate FHE encryption then Click below to compute the encrypted winner using FHE.  Once finalized, the winner ciphertext will be pinned here. Only the winner can optionally reveal their amount using a signed proof.'
             : isAuctionEnded
               ? 'Auction has ended. Waiting for finalization...'
               : 'Once the auction ends and is finalized, the winner ciphertext will be pinned here. Only the winner can optionally reveal their amount using a signed proof.'}
@@ -98,7 +98,7 @@ const WinnerSection = ({ auctionId, auctionData, winnerCiphertext }: WinnerSecti
             }}
             className="w-full rounded-2xl border border-emerald-500/30 bg-emerald-500/10 py-2 text-center text-xs font-semibold uppercase tracking-wide text-emerald-400 hover:bg-emerald-500/20 transition-all"
           >
-            🛠️ Fix: Set FHE Adapter
+            🛠️ Initiate FHE Encryption Adapter
           </button>
         </div>
       )}

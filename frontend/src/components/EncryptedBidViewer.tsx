@@ -19,7 +19,7 @@ const EncryptedBidViewer = ({ auctionId }: EncryptedBidViewerProps) => {
       {loading ? (
         <p className="mt-4 text-sm text-slate-400">Loading bids...</p>
       ) : bids.length === 0 ? (
-        <p className="mt-4 text-sm text-slate-400">No bids submitted yet</p>
+        <p className="mt-4 text-sm text-slate-400">No bids submitted yet.. Loading Bid...</p>
       ) : (
         <ul className="mt-4 space-y-3 text-sm text-emerald-200">
           {bids.map((bid, index) => (

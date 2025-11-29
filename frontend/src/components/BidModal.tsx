@@ -21,7 +21,7 @@ const BidModal = ({ auctionId }: BidModalProps) => {
       if (!auctionId) {
         throw new Error('Auction ID is missing');
       }
-      setStatus('Encrypting bid locally...');
+      setStatus('Encrypting bid on FHE...');
       const ciphertext = await encryptBid(amount, getAuctionAddress());
       setStatus('Sending encrypted bid to contract...');
       await submitEncryptedBid({
@@ -31,7 +31,7 @@ const BidModal = ({ auctionId }: BidModalProps) => {
         depositWei: ethers.parseEther('0.02').toString(),
         auctionId: BigInt(auctionId)
       });
-      setStatus('Encrypted bid submitted.');
+      setStatus('Encrypted bid submitted. wait for Finalization...');
       setAmount('');
       setSalt('');
     } catch (error: any) {
