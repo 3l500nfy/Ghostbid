@@ -36,6 +36,29 @@ const BidModal = ({ auctionId }: BidModalProps) => {
       setSalt('');
     } catch (error: any) {
       console.error('Bid submission error:', error);
+
+      // Check for specific error codes
+      const errorData = error?.data || '';
+
+      // AuctionClosed error code: 0x36b6b46d
+      if (errorData === '0x36b6b46d' || error?.message?.includes('0x36b6b46d')) {
+        setStatus('❌ Auction is closed - Time is up!');
+        return;
+      }
+
+      // BidLimitReached error code: 0x208f4eee
+      if (errorData === '0x208f4eee' || error?.message?.includes('0x208f4eee')) {
+        setStatus('❌ Bid limit reached - Auction is full!');
+        return;
+      }
+
+      // DepositTooLow error code: 0x2f4ca851
+      if (errorData === '0x2f4ca851' || error?.message?.includes('0x2f4ca851')) {
+        setStatus('❌ Deposit too low - Please increase your deposit!');
+        return;
+      }
+
+      // Generic error
       const errorMessage = error?.reason || error?.message || error?.toString() || 'Unknown error';
       setStatus(`Failed to submit encrypted bid: ${errorMessage}`);
     }

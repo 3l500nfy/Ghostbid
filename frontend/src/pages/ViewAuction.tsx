@@ -33,7 +33,16 @@ const ViewAuction = () => {
       </section>
 
       <EncryptedBidViewer auctionId={auctionId} />
-      <WinnerSection />
+      <WinnerSection
+        auctionId={auctionId}
+        auctionData={auctionData ? {
+          endTime: auctionData.endTime,
+          finalized: auctionData.finalized
+        } : undefined}
+        winnerCiphertext={auctionData?.winnerCiphertext ?
+          (typeof auctionData.winnerCiphertext === 'string' ? auctionData.winnerCiphertext : '') :
+          undefined}
+      />
     </main>
   );
 };

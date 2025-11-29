@@ -47,7 +47,7 @@
       ]
     },
     "/Users/id31500/Development/CryptoProjects/GhostBidFHE/ghostbid/contracts/EncryptedAuction.sol": {
-      "lastModificationDate": 1763573364671,
+      "lastModificationDate": 1764435796750,
       "contentHash": "ac81de62ec09e7476b994fa3d6581c20",
       "sourceName": "contracts/EncryptedAuction.sol",
       "solcConfig": {
@@ -315,8 +315,8 @@
       "artifacts": []
     },
     "/Users/id31500/Development/CryptoProjects/GhostBidFHE/ghostbid/fhevmTemp/@fhevm/solidity/config/ZamaConfig.sol": {
-      "lastModificationDate": 1764327001718,
-      "contentHash": "2ed697106fb9cc5510d56baf77bbda66",
+      "lastModificationDate": 1764435276356,
+      "contentHash": "c85e28972111397253ff2be2b8b9287e",
       "sourceName": "@fhevm/solidity/config/ZamaConfig.sol",
       "solcConfig": {
         "version": "0.8.24",
