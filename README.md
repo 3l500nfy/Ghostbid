@@ -590,7 +590,7 @@ This project would not be possible without the following amazing technologies an
 ## 👨‍💻 Developer
 
 **GitHub**: [@3l500nfy](https://github.com/3l500nfy)  
-**Twitter/X**: [@sunficry](https://twitter.com/sunficry)
+**Twitter/X**: [@sunficry](https://x.com/CryptoSunfi)
 
 ---
 
