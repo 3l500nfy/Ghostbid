@@ -2,6 +2,12 @@
 
 A privacy-preserving NFT auction platform using Zama's Fully Homomorphic Encryption (FHE) technology. Bidders can submit encrypted bids that remain private until the auction ends.
 
+<p>
+    <a href="https://ghostbid.vercel.app/">🌐 GHOSTBID LIVE</a> •
+    <a href="https://www.youtube.com/">🎥 GhostBid Demo Video</a> •
+  </p>
+
+
 ## 🔐 Key Features
 
 - **Sealed Bids**: All bids are encrypted using FHE before submission
