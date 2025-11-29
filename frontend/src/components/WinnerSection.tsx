@@ -79,13 +79,15 @@ const WinnerSection = ({ auctionId, auctionData, winnerCiphertext }: WinnerSecti
               try {
                 setFinalizing(true);
                 const { ethers } = await import('ethers');
+                const { getAuctionAddress } = await import('../config/contracts');
                 const provider = new ethers.BrowserProvider((window as any).ethereum);
                 const signer = await provider.getSigner();
                 const contract = new ethers.Contract(
-                  '0x2A7823C5BAdfDe32024E8d7512B4cC792a0Ef3C1', // Auction contract
+                  getAuctionAddress(),
                   ['function setFHEAdapter(uint256 auctionId, address adapter) external'],
                   signer
                 );
+                // TODO: Replace this hardcoded adapter address with an environment variable
                 const tx = await contract.setFHEAdapter(BigInt(auctionId!), '0x28eF8163933E97316f6232e8D0401570de99713e');
                 await tx.wait();
                 alert('Adapter set successfully! Now try finalizing.');
