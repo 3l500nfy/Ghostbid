@@ -24,9 +24,9 @@ const Home = () => {
 
             <Link
               className="rounded-full border border-white/20 px-6 py-3 text-sm font-semibold uppercase tracking-wide text-white hover:border-white/50"
-              to="/auction/1"
+              to="/auctions"
             >
-              Explore Ongoing Auction
+              Browse Ongoing Auctions
             </Link>
           </div>
         </header>
@@ -59,7 +59,7 @@ const Home = () => {
         </div>
 
         <p className="text-[10px] tracking-wide text-emerald-300/80 mt-1">
-          X : @SunfiCry
+          X : @CryptoSunfi
           Discord: @ID31500
         </p>
       </div>
